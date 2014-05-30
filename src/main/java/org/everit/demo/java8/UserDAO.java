@@ -46,13 +46,7 @@ public class UserDAO {
     }
     
     public User getYoungestUser() {
-        User rval = null;
-        for (User candidate : users) {
-            if (rval == null || candidate.getAge() < rval.getAge()) {
-                rval = candidate;
-            }
-        }
-        return rval;
+		return users.stream().min((user1, user2) -> user1.getAge() - user2.getAge()).orElse(null);
     }
 
 
