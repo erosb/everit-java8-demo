@@ -41,14 +41,8 @@ public class UserDAO {
     public User findUserByName(final String name) {
 		return users.stream()
 			.filter(user -> user.getName().equals(name))
-			.findFirst().orElseThrow(new Supplier<IllegalArgumentException>() {
-
-                    @Override
-                    public IllegalArgumentException get() {
-                        return new IllegalArgumentException("user [" + name + "] not found");
-                    }
-                    
-                });
+			.findFirst()
+			.orElseThrow(() -> new IllegalArgumentException("user [" + name + "] cannot be null"));
     }
 
 
