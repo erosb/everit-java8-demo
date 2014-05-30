@@ -44,6 +44,16 @@ public class UserDAO {
 			.findFirst()
 			.orElseThrow(() -> new IllegalArgumentException("user [" + name + "] cannot be null"));
     }
+    
+    public User getYoungestUser() {
+        User rval = null;
+        for (User candidate : users) {
+            if (rval == null || candidate.getAge() < rval.getAge()) {
+                rval = candidate;
+            }
+        }
+        return rval;
+    }
 
 
 }
