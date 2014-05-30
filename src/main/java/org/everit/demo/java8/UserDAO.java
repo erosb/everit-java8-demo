@@ -50,10 +50,7 @@ public class UserDAO {
     }
     
     public int getAgeSum() {
-        // users.stream().map(User::getAge)
-        // .reduce((Integer t, Integer u) -> new Integer(t.intValue() + u.intValue()))
-        // .orElse(new Integer(0));
-        return users.stream().map(User::getAge).reduce((t, u) -> t + u).orElse(0);
+		return users.stream().mapToInt(User::getAge).sum();
     }
 
 
