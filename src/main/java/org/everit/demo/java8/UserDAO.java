@@ -48,6 +48,13 @@ public class UserDAO {
     public User getYoungestUser() {
 		return users.stream().min((user1, user2) -> user1.getAge() - user2.getAge()).orElse(null);
     }
+    
+    public int getAgeSum() {
+        // users.stream().map(User::getAge)
+        // .reduce((Integer t, Integer u) -> new Integer(t.intValue() + u.intValue()))
+        // .orElse(new Integer(0));
+        return users.stream().map(User::getAge).reduce((t, u) -> t + u).orElse(0);
+    }
 
 
 }
