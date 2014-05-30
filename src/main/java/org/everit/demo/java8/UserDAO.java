@@ -37,6 +37,12 @@ public class UserDAO {
         }
         return rval;
     }
+    
+    public User findUserByName(final String name) {
+		return users.stream()
+			.filter(user -> user.getName().equals(name))
+			.findFirst().orElseThrow(IllegalArgumentException::new);
+    }
 
 
 }
