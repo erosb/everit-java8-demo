@@ -152,10 +152,10 @@ A terminális művelet meghívása majdnem mindig a forrás teljes bejárását 
 
 * ha rövidzár-kiértékelés jellegű köztes metódushívás van a pipeline-ban (pl. stream.limit(int)), akkor nyilván csak
  egy részét járjuk be a forrásnak
-* ha a terminális művelet stream.iterator() vagy stream.spliterator() akkor ezek (nyilván) nem járják be a forrást. Ezeket
+* ha a terminális művelet stream.iterator() akkor ez nem járja be a forrást. Ezt
  akkor lehet érdemes használni, ha a stream API-val nem tudjuk megoldani, amit szeretnénk.
  
- Párhuzamosítás
+Párhuzamosítás
 --------------
 
  * Collection.parallelStream()
@@ -207,6 +207,13 @@ Feladatok
 ---------
 
 	git checkout stream-examples
+
+Stream-ek felhasználási területei
+---------------------------------
+- elsősorban memóriabeli adatfeldolgozásra
+- esetleg IO-ra (lásd java.nio.file.Files)
+- adatbáziskezelésre nem
+
 
 Annotációk
 ==========
