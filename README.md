@@ -1,4 +1,20 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+
+Előkészületek
+=============
+* jdk1.8.0
+* eclipse kepler java8 support: <a href="http://www.eclipse.org/downloads/java8/">step-by-step guide</a>
+* git (1.7+)
+* repó itt:
+
+	git clone https://github.com/erosb/everit-java8-demo.git
+	git checkout -b lambda-syntax origin/lambda-syntax
+	git checkout -b def-impl origin/def-impl
+	git checkout -b stream origin/stream
+	git checkout -b stream-examples origin/stream-examples
+
+
+
 Default implementációk interfészekben
 =====================================
 
@@ -25,6 +41,7 @@ Al-interfészekben:
 * super minősítő interfész-kontextusban nem használható
 * final módosító nem használható
 
+	git checkout def-impl
 
 Lambda
 ======
@@ -32,9 +49,7 @@ Lambda
 A "lambda" kifejezés névtelen függvényekre utal.
 A névtelen függvények mindig (referencia-típusú) <strong>értékek</strong>.
 A típusok mindig a kontextustól függ.
-Semmi új nincs bennük, ilyenek rengeteg más nyelvben vannak (javascript, scala, go, lisp), a funkcionális paradigmából
-származnak
-Korábban főleg névtelen belső osztályokkal helyettesítettük őket
+Korábban főleg névtelen belső osztályokkal helyettesítettük őket.
 
 Funkcionális interfészek
 ------------------------
@@ -63,6 +78,10 @@ a törzs lehet:
 * kapcsoszárójelek között egy blokk
 * egy kifejezés
 
+	git checkout lambda-syntax
+	
+Példák: org.everit.demo.java8.User.java
+
 Láthatóság
 ----------
 Mivel a lambda függvények tulajdonképp névtelen osztályok, ezért nagyjából ugyanazok a szabályok vonatkoznak a változók
@@ -82,11 +101,12 @@ Lehetőség van arra is, hogy egy meglévő metódust használjunk egy funkcion�
 A meglévő metódusra való hivatkozást nevezzük metódusreferenciának. Elég sok variációja van, a :: minősítő operátorról
 mindegyiket fel lehet ismerni.
 
-http://cr.openjdk.java.net/~briangoetz/lambda/lambda-state-final.html
+Példák: org.everit.demo.java8.MethodReferenceExamples.java
 
 A példákban most a java.util.function-t használjuk. Ebben a csomagban olyan interfészek vannak, melyek különböző
 szignatúrájú függvényeket reprezentálnak.
 
+Bővebben: http://cr.openjdk.java.net/~briangoetz/lambda/lambda-state-final.html
 
 Stream API
 ==========
@@ -134,13 +154,8 @@ A terminális művelet meghívása majdnem mindig a forrás teljes bejárását 
  egy részét járjuk be a forrásnak
 * ha a terminális művelet stream.iterator() vagy stream.spliterator() akkor ezek (nyilván) nem járják be a forrást. Ezeket
  akkor lehet érdemes használni, ha a stream API-val nem tudjuk megoldani, amit szeretnénk.
-  
-További fogalmak:
-
-  * stateful / stateless stream
-  * short-circuiting operator
-
-Párhuzamosítás
+ 
+ Párhuzamosítás
 --------------
 
  * Collection.parallelStream()
@@ -157,6 +172,17 @@ Fontos: párhuzamos streameknél a műveletek legyenek  non-interfering stateles
 <i>Kérdés: hogyan lehet a párhuzamosan futó szálak számát szabályozni?</i>
 
 Mellékhatásokat igyekezzünk kerülni.
+  
+Stream példák
+-------------
+
+	git checkout 51718dae493a30b2ef
+	git checkout 4387ff866be77a
+	git checkout b238a5e846cc2fb7d854c0
+	git checkout 5c13022d7856c8905a
+	git checkout 51ebb14eb1a6d3f7b9216ff
+	git checkout 8afda1581f51c30531db6b3
+	git checkout 5e94e153ee235512a56f1de
 
 
 Primitív streamek
@@ -176,8 +202,11 @@ Stream<T> példányt leképezni a stream.mapTo* függvényekkel tudunk:
  * IntStream stream.mapToInt()
  * DoubleStream stream.mapToDouble()
  * LongStream stream.mapToLong()
+ 
+Feladatok
+---------
 
-
+	git checkout stream-examples
 
 Annotációk
 ==========
@@ -226,14 +255,6 @@ Az annotáció használatánál viszont nem kell kiírni a @Properties annotáci
 A annotációk reflectionnel történő feldolgozása is ugyanúgy történik mint korábban, tehát először a konténer-annotációt
 kérdezzük le (@Properties), utána ebből a tömb elemeit (@Property).
 
-Type annotations
-----------------
-
-apt (annotation processing tool) helyett használandó: compiler pluginek építésére való
-
-	@Target(ElementType.TYPE_USE)
-	
-
 Reflection 
 ----------
 
@@ -243,3 +264,12 @@ A java.lang.reflect csomagban
 	a formális paraméternevek elérhetőek futásidőben, de csak akkor, ha -parameters kapcsolóval futtattuk a javac-ot
 	(default <code>false</code>)
 	<i>megjegyzés: a standard API-ban levő osztályokat nem így fordították...</i>
+
+
+Type annotations
+----------------
+
+apt (annotation processing tool) helyett használandó: compiler pluginek építésére való
+
+	@Target(ElementType.TYPE_USE)
+	
