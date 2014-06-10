@@ -7,12 +7,13 @@ Előkészületek
 * git (1.7+)
 * repó itt:
 
+<pre>
 	git clone https://github.com/erosb/everit-java8-demo.git
 	git checkout -b lambda-syntax origin/lambda-syntax
 	git checkout -b def-impl origin/def-impl
 	git checkout -b stream origin/stream
 	git checkout -b stream-examples origin/stream-examples
-
+</pre>
 
 
 Default implementációk interfészekben
@@ -272,11 +273,7 @@ A java.lang.reflect csomagban
 	(default <code>false</code>)
 	<i>megjegyzés: a standard API-ban levő osztályokat nem így fordították...</i>
 
-
-Type annotations
-----------------
-
-apt (annotation processing tool) helyett használandó: compiler pluginek építésére való
-
-	@Target(ElementType.TYPE_USE)
-	
+Amiről nem volt szó
+===================
+- új datetime API
+- "annotations on java types"
