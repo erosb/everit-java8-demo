@@ -166,7 +166,7 @@ Fontos: párhuzamos streameknél a műveletek legyenek  non-interfering stateles
 
 	String implode(List<String> entries) {
 		final StringBuilder sb = new StringBuilder();
-		entries.parallelStream().peek(entry -> sb.append(entry));
+		entries.parallelStream().forEach(entry -> sb.append(entry));
 		return sb.toString();
 	}
 
