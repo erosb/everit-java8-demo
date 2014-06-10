@@ -216,8 +216,8 @@ Stream-ek felhasználási területei
 - adatbáziskezelésre nem
 
 
-Annotációk
-==========
+Reflectionnel kapcsolatos újdonságok
+====================================
 
 Repeating annotations
 ---------------------
@@ -263,8 +263,8 @@ Az annotáció használatánál viszont nem kell kiírni a @Properties annotáci
 A annotációk reflectionnel történő feldolgozása is ugyanúgy történik mint korábban, tehát először a konténer-annotációt
 kérdezzük le (@Properties), utána ebből a tömb elemeit (@Property).
 
-Reflection 
-----------
+Reflection API
+--------------
 
 A java.lang.reflect csomagban
 * a Method és a Constructor kapott egy közös ősosztályt: Executable
